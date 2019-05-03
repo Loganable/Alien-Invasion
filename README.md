@@ -1,2 +1,2 @@
-# Alien-Invasion
-Pygame小游戏
+# Pygame小游戏
+Alien-Invasion
