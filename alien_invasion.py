@@ -12,8 +12,8 @@ def run_game():
         (ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
     
-    # 创建一艘飞船
-    ship = Ship(screen)
+    # 创建飞船
+    ship = Ship(ai_settings, screen)
     
     # 开始游戏的主循环
     while True:
