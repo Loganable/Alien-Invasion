@@ -1,3 +1,5 @@
+import game_functions as gf
+
 class GameStats():
     """跟踪游戏的统计信息"""
     
@@ -10,7 +12,7 @@ class GameStats():
         self.game_active = False
         
         # 在任何情况下都不应重置最高分
-        self.high_score = 0
+        self.high_score = gf.read_highest_score()
         
     def reset_stats(self):
         """初始化在游戏运行期间可能变化的统计信息"""

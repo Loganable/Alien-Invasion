@@ -15,6 +15,7 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, play_button,
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
+        record_highest_score(stats.high_score)
         sys.exit()
     elif event.key == pygame.K_p:
         game_reset(ai_settings, screen, stats, sb, ship, 
@@ -39,6 +40,7 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens,
     """响应按键和鼠标事件"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            record_highest_score(stats.high_score)
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event, ai_settings, screen, stats, sb, 
@@ -241,3 +243,15 @@ def check_high_score(stats, sb):
     if stats.score > stats.high_score:
         stats.high_score = stats.score
         sb.prep_high_score()
+
+def record_highest_score(highest_score):
+    with open('highest_score.txt', 'w') as file_object:
+        file_object.write(str(highest_score))
+
+def read_highest_score():
+    with open('highest_score.txt') as file_object:
+        contents = file_object.read()
+    if contents == '':
+        return 0
+    else:
+        return int(contents)
